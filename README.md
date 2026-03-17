@@ -1,44 +1,32 @@
-# Kyle's Stack
+# Todo App
 
-A starter for building apps with TanStack Start, Radix UI, and capsize typography — with [`@tanstack/intent`](https://github.com/TanStack/intent) skills pre-installed for **Electric**, **TanStack DB**, and **Durable Streams**.
+A reactive, real-time todo application built with Electric SQL + TanStack DB. All changes sync instantly across connected clients via Postgres.
 
-## Quick Start
+![Screenshot placeholder](./screenshot.png)
+
+## Features
+
+- Add todos via the input field (press Enter or click Add)
+- Mark todos complete/incomplete with a checkbox
+- Delete todos with the trash icon
+- Filter view: All / Active / Completed
+- Real-time sync — changes appear instantly across all connected clients
+- Optimistic mutations for snappy, instant UI feedback
+
+## How to Run
 
 ```bash
-npx gitpick KyleAMathews/kpb my-app
-cd my-app
 pnpm install
-pnpm dev
+pnpm dev:start
 ```
 
-## Included Skills
+The app will be available at http://localhost:5173
 
-This starter comes with skills pre-installed. Just ask your coding agent:
+## Tech Stack
 
-**Electric** — Sync Postgres to your app
-- "Set up Electric sync for my Postgres database"
-- "Run the Electric security checklist"
-
-**TanStack DB** — Reactive client-side data
-- "Add a TanStack DB collection for the users table"
-- "Set up live queries for my todos"
-
-**Durable Streams** — Real-time state sync
-- "Set up a Durable Streams dev environment"
-- "Add presence tracking to my app"
-
-**Radix + Capsize** — Typography
-- "Switch to the Playfair theme"
-- "Show me more font theme options"
-
-## What's Included
-
-- **TanStack Start** - Full-stack React framework
-- **Radix UI** - Accessible components with themes
-- **Capsize typography** - Pixel-perfect text rendering
-- **Dozens of font pairings included** - Ask the agent to set one up
-- **Biome** - Fast linting and formatting
-
-## License
-
-MIT
+- **Electric SQL** — Postgres-to-client sync via shapes
+- **TanStack DB** — Reactive collections and live queries
+- **Drizzle ORM** — Schema definitions and migrations
+- **TanStack Start** — React meta-framework with SSR
+- **Radix UI Themes** — Component library
+- **Biome** — Linting and formatting

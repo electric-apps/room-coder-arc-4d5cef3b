@@ -1,0 +1,1 @@
+{"hooks":{"PreToolUse":[{"matcher":"AskUserQuestion","hooks":[{"type":"command","command":"/home/agent/workspace/room-coder-arc-4d5cef3b/.claude/hooks/forward.sh"}]}]}}

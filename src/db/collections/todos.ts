@@ -2,6 +2,14 @@ import { createCollection } from "@tanstack/db";
 import { electricCollectionOptions } from "@tanstack/electric-db-collection";
 import { type Todo, todoSelectSchema } from "../zod-schemas";
 
+async function parseResponse(res: Response) {
+	const data = await res.json();
+	if (!res.ok) {
+		throw new Error(data.error ?? `Request failed with status ${res.status}`);
+	}
+	return data;
+}
+
 export const todosCollection = createCollection(
 	electricCollectionOptions({
 		id: "todos",
@@ -17,7 +25,7 @@ export const todosCollection = createCollection(
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(todo),
 			});
-			const data = await res.json();
+			const data = await parseResponse(res);
 			return { txid: data.txid };
 		},
 		onUpdate: async ({ transaction }) => {
@@ -27,7 +35,7 @@ export const todosCollection = createCollection(
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(todo),
 			});
-			const data = await res.json();
+			const data = await parseResponse(res);
 			return { txid: data.txid };
 		},
 		onDelete: async ({ transaction }) => {
@@ -35,7 +43,7 @@ export const todosCollection = createCollection(
 			const res = await fetch(`/api/mutations/todos/${todo.id}`, {
 				method: "DELETE",
 			});
-			const data = await res.json();
+			const data = await parseResponse(res);
 			return { txid: data.txid };
 		},
 	}),
